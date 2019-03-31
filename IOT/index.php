@@ -2,7 +2,7 @@
 
 session_start();
 
-if(!isset($_SESSION["user_id"]) && ($_GET["special"]!="prakash" || !isset($_GET["special"]))){
+if(!isset($_SESSION["user_id"])){
 
   header("Location: Login.php");
 
