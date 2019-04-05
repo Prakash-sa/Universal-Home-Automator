@@ -9,12 +9,7 @@ if(!isset($_SESSION["user_id"])){
 }
 
 
-
 ?>
-
-
-
-
 
 
 <!doctype html>
@@ -27,100 +22,12 @@ if(!isset($_SESSION["user_id"])){
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+	<link href="styles.css" rel="stylesheet">
 
 
     <title>IOT</title>
     
-    <style>
-      
-      body{
-		padding: 0;
-		margin: 0;
-		background-color: #333333;
-
-	}
-
-	.bulbBox{
-
-		width: 600px;
-		height: 400px;
-		margin: 0 auto;
-		text-align: center;
-      	margin-top : 50px;
-	}
-
-
-.bulbIndicate{
-
-	width: 500px;
-	height: 200px;
-	margin: 0 auto;
-	
-
-}
-
-input[type="checkbox"]{
-	position: relative;
-	width: 120px;
-	height: 40px;
-	-webkit-appearance : none;
-	background : linear-gradient(0deg,#333,#000);
-	outline: none;
-	border-radius: 20px;
-	box-shadow: 0 0 0 4px #353535, 0 0 0 5px #3e3e3e, inset 0 0 10px rgba(0,0,0,1), 0 5px 20px rgba(0,0,0,.5), inset 0 0 15px rgba(0,0,0,.2);
-}
-
-input:checked[type="checkbox"]{
-	background : linear-gradient(0deg,#6dd1ff,#20bf77);
-	box-shadow: 0 0 2px #6dd1ff, 0 0 0 4px #353535, 0 0 0 5px #3e3e3e, inset 0 0 10px rgba(0,0,0,1), 0 5px 20px rgba(0,0,0,.5), inset 0 0 15px rgba(0,0,0,.2);
-}
-
-input[type="checkbox"]:before{
-	content: '';
-	position: absolute;
-	top:0;
-	left:0;
-	width: 80px;
-	height: 40px;
-	background : linear-gradient(0deg,#000,#6b6b6b);
-	border-radius: 20px;
-	box-shadow: 0 0 0 1px #232323;
-	transform: scale(.98,.96);
-	transition: .5s;
-}
-
-input:checked[type="checkbox"]:before{
-	left: 40px;
-
-}
-
-input[type="checkbox"]:after{
-	content: '';
-	position: absolute;
-	top:calc(50% - 2px);
-	left:65px;
-	width: 4px;
-	height: 4px;
-	background : linear-gradient(0deg,#6b6b6b,#000);
-	border-radius: 50%;
-	
-	transition: .5s;
-}
-
-input:checked[type="checkbox"]:after{
-	background : #63cdff;
-	left: 105px;
-	box-shadow: 0 0 5px #13b3ff, 0 0 15px #13b3ff;
-}
-
-      h3{
-       
-        color : white;
-        
-      }
-      
-      
-    </style>
+    
     
   </head>
   <body>
@@ -184,7 +91,9 @@ input:checked[type="checkbox"]:after{
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script>
       
-      $('#toggle-event').change(function() {
+	  // testing purposes
+	  
+   /*   $('#toggle-event').change(function() {
       if($(this).prop('checked')){
       // start active mode 
         
@@ -195,8 +104,10 @@ input:checked[type="checkbox"]:after{
          
       }
         
-      })
+      }) */
       
+	  // utility function used in getting current time
+	  
       function addZero(i) {
   if (i < 10) {
     i = "0" + i;
@@ -240,10 +151,13 @@ input:checked[type="checkbox"]:after{
             }
          
        });
-      let x = 0 ;
+      
+	  //let x = 0 ;
       
     
       var params = [];
+	  
+	  // testing purposes
       
     /*  setInterval(function(){
         
@@ -313,7 +227,7 @@ input:checked[type="checkbox"]:after{
                  },5000);*/
      
       
-      
+      // Chart 1 code , using Chart.js javascript library
       
       var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
@@ -393,6 +307,8 @@ legend: {
     }
 });
 
+// function to update data in the chart
+
 function adddata(temperature,humidity){
        x= x + 1;
         chart.data.datasets[0].data.push(temperature) ;
@@ -410,6 +326,8 @@ function adddata(temperature,humidity){
       chart.update();
     }
       
+	  // requesting temperature data from Sensor
+	  
     $("#add").click(function(){
     
      $.ajax({
@@ -424,6 +342,8 @@ function adddata(temperature,humidity){
           
         }
  });
+ 
+ // testing purposes
         
     /*   $.ajax({
     type : "GET",
@@ -472,6 +392,8 @@ function adddata(temperature,humidity){
       adddata(params[0],params[1]);
     
     })  
+	
+	// Code for chart 2
       
    var ctx2 = document.getElementById('myChart2').getContext('2d');
 var chart2 = new Chart(ctx2, {
@@ -551,7 +473,7 @@ legend: {
     }
 });   
     
-      
+      // requesting resistance type 1 value 
       
       $("#add2").click(function(){
       var ro = 0 ;
@@ -568,7 +490,10 @@ legend: {
      // alert(params[1]);
         }
  });
-        
+    
+	
+	// requesting resistance type 2 value
+	    
          $.ajax({
     type : "GET",
            async:false,
@@ -584,6 +509,8 @@ legend: {
       
       })
       
+	  // ppm calculation for carbon dioxide and Ammonium , using Decimal.js for accurate floating point arithmetic
+	  
          var CO2 = new Decimal(114.354).times(new Decimal(rs).dividedBy(new Decimal(ro)).toPower(new Decimal(-2.935))).toFixed(2) ;
         var NH4 =  new Decimal(102.694).times(new Decimal(rs).dividedBy(new Decimal(ro)).toPower(new Decimal(-2.488))).toFixed(2);
          adddata2(CO2,NH4);
@@ -623,7 +550,7 @@ legend: {
           
         }
  });
-        
+        // change this value > 60 to get fire alarm value
         temp = 60;
         
         if(temp > 60){
