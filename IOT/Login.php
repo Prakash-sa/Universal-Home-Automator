@@ -8,77 +8,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
      <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
-    <title>Hello, world!</title>
+    <link href="loginstyles.css" rel="stylesheet">
 
-<style type="text/css">
-  body{
-        background:linear-gradient(
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
-    ), url(home.png) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;          
-          margin: 0;
-          padding: 0;
-        }
+<title>Universal Home Automator</title>
 
-        #main{
-          text-align: center;
-          margin: 0 auto;
-          margin-top: 225px;
-
-        }
-
-      .form-control{
-        width: 250px;
-        height: 40px;
-      }
-
-      input[type="text"] {
-             display: block;
-             margin : 0 auto;
-
-        }
-
-        input[type="password"] {
-             display: block;
-             margin : 0 auto;
-
-        }
-
-    h1{
-      color: white;
-      font-family: 'Dancing Script', cursive;
-      font-size: 65px;
-    }
-
-    p{
-
-      color: white;
-      font-family:  cursive;
-      font-size: 20px;
-
-    }
-
-    #user{
-      position: relative;
-      margin-top : 30px;
-    }
-
-    #sign{
-      margin-top : 20px;
-    }
-
-  #error{
-    
-    margin-top : 30px;
-    display : none ;
-    width: 40%;
-  }
-
-</style>
 
   </head>
   <body>
@@ -123,50 +56,7 @@
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
 
-    <script type="text/javascript">
-
-      $("#sign").click(function(){
-
-        var Username = $("#user").val().trim();
-      var Password = $("#pass").val().trim();
-
-      if(Username == "" || Password == ""){
-
-      }else{
-         $.ajax({
-        url: "signin.php",
-        type: "post",
-        data: {
-          user: Username,
-          pass: Password
-        } ,
-        success: function (response) {
-              
-          if(response == "1"){
-         window.location.href = ' http://rajhosting-com.stackstaging.com/IOT/ ' ;
-          }else{
-          
-            var clause = '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-            
-            $("#error").html(response + clause);
-            $("#error").css("display","block");
-          
-          
-          }
-        }
-
-
-    });
-      }
-
-      })
-      
-      
-
-
-
-
-    </script>
+    <script src="login.js" ></script>
 
 
   </body>
