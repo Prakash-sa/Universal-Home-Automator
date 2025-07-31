@@ -47,3 +47,42 @@ Include a diagram image here if available (e.g., `/assets/circuit_diagram.png`)
    ```bash
    git clone https://github.com/Prakash-sa/Universal-Home-Automator.git
    cd Universal-Home-Automator/IOT
+
+2. Open the .ino file in Arduino IDE.
+
+3. Install required libraries:
+
+- FirebaseESP8266
+
+- DHT sensor library
+
+- ESP8266WiFi
+
+4. Update the following in your sketch:
+
+```
+cpp
+Copy
+Edit
+#define WIFI_SSID "your-ssid"
+#define WIFI_PASSWORD "your-password"
+#define FIREBASE_HOST "your-firebase-host"
+#define FIREBASE_AUTH "your-firebase-database-secret"
+```
+
+5. Upload the sketch to your NodeMCU.
+
+6. Monitor output via Serial Monitor and control devices via your app or Firebase console.
+
+## 📊 Real-time Database Structure (Firebase)
+```json
+{
+  "devices": {
+    "light": true,
+    "fan": false
+  },
+  "sensors": {
+    "temperature": 25,
+    "humidity": 70
+  }
+}
