@@ -37,9 +37,6 @@ The IoT module connects sensors and actuators to a NodeMCU (ESP8266) and integra
 - Power supply
 - Jumper wires, breadboard, resistors
 
-## 🔌 Circuit Diagram
-
-Include a diagram image here if available (e.g., `/assets/circuit_diagram.png`)
 
 ## 🚀 Getting Started
 
